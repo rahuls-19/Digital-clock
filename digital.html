@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Digital Clock</title>
+    <style type = "text/css">
+    body{
+      background: #000;
+    }
+    .clock{
+      position : absolute;
+      font-size: 80px;
+      color: #777;
+      top : 50%;
+      left : 50%;
+      transform : translateX(-50%)  translateY(-50%);
+      padding: 0px 5px 0px 5px;
+      border: 1px solid #ccc;
+
+    }
+    </style>
+  </head>
+  <body>
+    <div id="myclock" class = "clock"></div>
+    <script type = "text/javascript">
+    function showtime(){
+      var date = new Date();
+      var h = date.getHours();
+      var m = date.getMinutes();
+      var s = date.getSeconds();
+      var  session = "AM";
+      if(h == 0){
+        h = 12;
+      }
+      if(h > 12){
+        h = h - 12;
+        session = "PM";
+      }
+      if(m < 10){
+        m = "0" + m;
+      }
+      if(h < 10){
+        h = "0" + h;
+      }
+      if(s < 10){
+        s = "0" + s;
+      }
+
+
+      var time = h + ":" +  m + ":" + s + " " + session;
+      document.getElementById("myclock").innerText = time;
+      setTimeout(showtime,1000);
+    }
+    showtime();
+
+    </script>
+  </body>
+
+</html>
